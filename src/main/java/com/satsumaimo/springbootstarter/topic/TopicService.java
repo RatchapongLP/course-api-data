@@ -16,7 +16,7 @@ public class TopicService {
 	}
 	
 	public Topic getTopic(String id) {
-		return topicRepository.findById(id).get();
+		return topicRepository.findById(id).orElse(null);
 	}
 
 	public void addTopic(Topic topic) {
