@@ -20,9 +20,12 @@ public class CourseService {
 	}
 
 	public void addCourse(Course course) {
-		// The 'course' has the 'topic' foreign key as empty-data except for the topicId.
+		// From the CourseController,
+		// The 'course' has the 'topic' foreign key as empty-fielded except for the topic's id.
 		// But the JPA repository auto-search the particular topic from the Topic table 
-		// using the topicId, then it maps the existing topic row to the new course record.
+		// using the topicId, then it injects the found topic record to create the new course record.
+		
+		// If no existing topic with id = topicId is found, a jakarta.persistence.EntityNotFoundException is thrown
 		courseRepository.save(course);
 	}
 
